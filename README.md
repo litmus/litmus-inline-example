@@ -31,12 +31,10 @@ deployed to https://litmus-inline-example.herokuapp.com
 ## Running locally
 
 ```sh
-source .env && bundle exec thin start --ssl --port 4567
+source .env && bundle exec thin start --port 4567
 ```
 
-Then use https://litmus-inline-example.127.0.0.1.xip.io:4567 (OAuth callback URLs
-require HTTPS)
-
+Then use http://0.0.0.0:4567
 
 ## ENV vars
 
