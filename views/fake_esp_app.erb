@@ -54,7 +54,7 @@
         <form>
           <fieldset class="form-group">
             <label for="user-hash">Example user hash<br>(change this to simulate a different ESP user)</label>
-            <input class="form-control" type="text" name="user-hash" id="user-hash" value="abc123" />
+            <input class="form-control" type="text" name="user-hash" id="user-hash" />
           </fieldset>
 
           <fieldset class="form-group">
@@ -144,7 +144,16 @@
   <script>
     Litmus.setup("<%= publishable_key %>");
 
+    // on load we initialise our demo with random hashes - a collision with
+    // someone who's previously used the demo can be confusing.
+    function randomString() { return Math.random().toString(36).substring(7); }
+    function randomDemoHash() { return randomString() + randomString() + randomString(); }
+    document.getElementById("user-hash").value = randomDemoHash();
+    document.getElementById("account-hash").value = randomDemoHash();
+    document.getElementById("project-hash").value = randomDemoHash();
+
     // For our demo purposes we need to pick up changes to the fields above
+    // In reality user hash would likely be fixed within a session
     var identify = function () {
       Litmus.identify({
         user: document.getElementById("user-hash").value,
@@ -166,7 +175,6 @@
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr("href") // activated tab
-      console.log(target);
       if (target === "#litmus-platform") {
         Litmus.open();
       }
