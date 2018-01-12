@@ -152,14 +152,17 @@
       return document.getElementById("html").value;
     });
 
-    // set up HTML5 history on tab navigation to demonstrate the interaction of
-    // the frame's history with the parent
-    $('a[data-toggle="tab"]').historyTabs();
+    // Open the Litmus Inline frame (in our target-container div) whenever
+    // the user navigates to the Litmus tab.
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr("href") // activated tab
       if (target === "#litmus-platform") {
         Litmus.open();
       }
     });
+
+    // set up HTML5 history on tab navigation to demonstrate the interaction of
+    // the frame's history with the parent
+    $('a[data-toggle="tab"]').historyTabs();
   </script>
 </body>
