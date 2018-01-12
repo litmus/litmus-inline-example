@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <style>
+    .tab-content { min-height: 400px; }
+    /*.tab-content .form-group { padding: 0.5rem; }*/
+    h1 { font-size: 2rem; padding: 1rem 0; }
+    .tab-pane { padding: 15px; }
+    #litmus-platform { padding: 0; }
+  </style>
+
+  <script src="https://litmus.com/inline/sdk-0.0.1.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h1><%= app_name %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" href="#hidden-config" role="tab" data-toggle="tab">Hidden config</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#editor" role="tab" data-toggle="tab">Design</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#litmus-platform" role="tab" data-toggle="tab">Litmus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#send" role="tab" data-toggle="tab">Send</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /container-fluid -->
+
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active show" id="hidden-config">
+      <div class="form-group">
+        <form>
+          <fieldset class="form-group">
+            <label for="user-hash">Example user hash<br>(change this to simulate a different ESP user)</label>
+            <input class="form-control" type="text" name="user-hash" id="user-hash" value="abc123" />
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="account-hash">Example (optional) account hash</label>
+            <input class="form-control" type="text" name="account-hash" id="account-hash" value="xyz789" />
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="project-hash">Example project hash<br>(used to distinguish a project/document/campaign/test-set)</label>
+            <input class="form-control" type="text" name="project-hash" id="project-hash" value="foo456" />
+          </fieldset>
+        <form>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="editor">
+      <div class="form-group">
+        <form>
+          <fieldset class="form-group">
+            <label for="subject">Email Subject</label>
+            <input class="form-control" type="text" name="subject" id="subject" value="Awesome Subject" />
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="html">Email HTML</label>
+            <textarea class="form-control" name="html" id="html" cols="40" rows="10"><h1>Awesome email content</h1></textarea>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="litmus-platform">
+      <!-- this div needs to exist in the DOM when Litmus.setup is called -->
+      <div id="litmus-container"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="send">
+      <button type="button" class="btn btn-primary btn-lg">Send Campaign</button>
+    </div>
+  </div>
+
+<footer class="footer">
+  <div class="container-fluid">
+    <hr>
+    <span class="text-muted">Awesome ESP's awesome footer.</span>
+  </div>
+</footer>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  <script>
+    // simulate browser navigation history in bootstrap tabs
+    // https://github.com/jeffdavidgreen/bootstrap-html5-history-tabs
+    $(document).ready(function(){
+      +function ($) {
+          'use strict';
+          $.fn.historyTabs = function() {
+              var that = this;
+              window.addEventListener('popstate', function(event) {
+                  if (event.state) {
+                      $(that).filter('[href="' + event.state.url + '"]').tab('show');
+                  }
+              });
+              return this.each(function(index, element) {
+                  $(element).on('show.bs.tab', function() {
+                      var stateObject = {'url' : $(this).attr('href')};
+
+                      if (window.location.hash && stateObject.url !== window.location.hash) {
+                          window.history.pushState(stateObject, document.title, window.location.pathname + $(this).attr('href'));
+                      } else {
+                          window.history.replaceState(stateObject, document.title, window.location.pathname + $(this).attr('href'));
+                      }
+                  });
+                  if (!window.location.hash && $(element).is('.active')) {
+                      // Shows the first element if there are no query parameters.
+                      $(element).tab('show');
+                  } else if ($(this).attr('href') === window.location.hash) {
+                      $(element).tab('show');
+                  }
+              });
+          };
+      }(jQuery);
+
+      $('a[data-toggle="tab"]').historyTabs();
+    });
+  </script>
+
+  <script>
+    Litmus.setup("<%= publishable_key %>");
+
+    // For our demo purposes we need to pick up changes to the fields above
+    var identify = function () {
+      Litmus.identify({
+        user: document.getElementById("user-hash").value,
+        account: document.getElementById("account-hash").value,
+        project: document.getElementById("project-hash").value
+      });
+    };
+    identify();
+    document.getElementById("user-hash").onchange = identify;
+    document.getElementById("account-hash").onchange = identify;
+    document.getElementById("project-hash").onchange = identify;
+
+    Litmus.emailSubjectFrom(function() {
+      return document.getElementById("subject").value;
+    });
+    Litmus.emailHtmlFrom(function() {
+      return document.getElementById("html").value;
+    });
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var target = $(e.target).attr("href") // activated tab
+      console.log(target);
+      if (target === "#litmus-platform") {
+        Litmus.open();
+      }
+    });
+  </script>
+</body>
