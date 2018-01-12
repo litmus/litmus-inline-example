@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
   <style>
@@ -92,6 +92,8 @@
     </div>
   </div>
 
+<!-- the footer demonstrates how the frame resizes and pushes the application
+     content below it down -->
 <footer class="footer">
   <div class="container-fluid">
     <hr>
@@ -99,48 +101,13 @@
   </div>
 </footer>
 
-  <!-- bootstrap -->
+  <!-- bootstrap script imports -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="/javascripts/bootstrap-html5-history-tabs.js"></script>
 
-  <script>
-    // simulate browser navigation history in bootstrap tabs
-    // https://github.com/jeffdavidgreen/bootstrap-html5-history-tabs
-    $(document).ready(function(){
-      +function ($) {
-          'use strict';
-          $.fn.historyTabs = function() {
-              var that = this;
-              window.addEventListener('popstate', function(event) {
-                  if (event.state) {
-                      $(that).filter('[href="' + event.state.url + '"]').tab('show');
-                  }
-              });
-              return this.each(function(index, element) {
-                  $(element).on('show.bs.tab', function() {
-                      var stateObject = {'url' : $(this).attr('href')};
-
-                      if (window.location.hash && stateObject.url !== window.location.hash) {
-                          window.history.pushState(stateObject, document.title, window.location.pathname + $(this).attr('href'));
-                      } else {
-                          window.history.replaceState(stateObject, document.title, window.location.pathname + $(this).attr('href'));
-                      }
-                  });
-                  if (!window.location.hash && $(element).is('.active')) {
-                      // Shows the first element if there are no query parameters.
-                      $(element).tab('show');
-                  } else if ($(this).attr('href') === window.location.hash) {
-                      $(element).tab('show');
-                  }
-              });
-          };
-      }(jQuery);
-
-      $('a[data-toggle="tab"]').historyTabs();
-    });
-  </script>
-
+  <!-- Litmus Inline integration setup -->
   <script>
     Litmus.setup("<%= publishable_key %>");
 
@@ -152,8 +119,9 @@
     document.getElementById("account-hash").value = randomDemoHash();
     document.getElementById("project-hash").value = randomDemoHash();
 
-    // For our demo purposes we need to pick up changes to the fields above
-    // In reality user hash would likely be fixed within a session
+    // For our demo purposes we need to pick up changes to the fields above when
+    // the input fields change. In reality most of these would be fixed within
+    // the page context.
     var identify = function () {
       Litmus.identify({
         user: document.getElementById("user-hash").value,
@@ -166,6 +134,8 @@
     document.getElementById("account-hash").onchange = identify;
     document.getElementById("project-hash").onchange = identify;
 
+    // provide callbacks that allow the SDK to look up email subject and html
+    // whenever a test run is requested
     Litmus.emailSubjectFrom(function() {
       return document.getElementById("subject").value;
     });
@@ -173,6 +143,9 @@
       return document.getElementById("html").value;
     });
 
+    // set up HTML5 history on tab navigation to demonstrate the interaction of
+    // the frame's history with the parent
+    $('a[data-toggle="tab"]').historyTabs();
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr("href") // activated tab
       if (target === "#litmus-platform") {
