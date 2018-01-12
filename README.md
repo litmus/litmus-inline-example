@@ -1,4 +1,4 @@
-# Litmus OAuth: Example Partner Integration
+# Litmus Inline: Example Partner Integration
 
 A minimal example of integrating Litmus Inline with an ESP's application.
 
