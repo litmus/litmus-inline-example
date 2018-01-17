@@ -38,7 +38,7 @@ Then use http://0.0.0.0:4567
 
 ## ENV vars
 
-(For local use place these in `/.env`)
+(For local use place these in `./.env`)
 
 Example:
 ```
