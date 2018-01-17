@@ -9,7 +9,7 @@
 
   <style>
     body { background-color: #fff; }
-    .tab-content { min-height: 400px; background-color: #fff; margin: 20px; border: 2px #007bff solid; border-radius: 4px; }
+    .tab-content { min-height: 400px; background-color: #fff; }
     h1 { font-size: 2rem; padding: 1rem 0; margin-bottom: 0; }
     .tab-pane { padding: 15px; }
     #litmus-platform { padding: 0; }
@@ -24,7 +24,7 @@
       <div class="col-sm-12">
         <h1><%= app_name %></h1>
         <div class="alert alert-info">
-          Note: Everything in the blue container is the SDK. Everything outside is considered the ESP.
+          Note: Only the content in the litmus tab is part of the SDK. The rest is considered the ESP.
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
             <a class="nav-link" href="#editor" role="tab" data-toggle="tab">Design</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#litmus-platform" role="tab" data-toggle="tab">Litmus</a>
+            <a class="nav-link" href="#litmus-platform" role="tab" data-toggle="tab">Litmus - SDK</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#send" role="tab" data-toggle="tab">Send</a>
