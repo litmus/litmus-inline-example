@@ -18,7 +18,7 @@ get '/all-plan' do
 
   erb :fake_esp_app,
       locals: {
-        app_name: 'Fake Single Page ESP - All Plan Flow (no trial)',
+        app_name: 'Example Single Page ESP - All Plan Flow (no trial)',
         publishable_key: publishable_key
       }
 end
@@ -29,7 +29,7 @@ get '/enterprise' do
 
   erb :fake_esp_app,
       locals: {
-        app_name: 'Fake Single Page ESP - Enterprise Flow',
+        app_name: 'Example Single Page ESP - Enterprise Flow',
         publishable_key: publishable_key
       }
 end
