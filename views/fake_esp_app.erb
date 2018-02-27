@@ -78,7 +78,7 @@
   <div class="container-fluid">
 
     <div class="row sample-partner-chrome">
-      <h1>Sample <%= app_name %></h1>
+      <h1><%= app_name %></h1>
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" href="#hidden-config" role="tab" data-toggle="tab">Hidden config</a>
@@ -101,16 +101,12 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active show" id="hidden-config">
-      <div class="form-group">
-        <p>
-          Note that the behaviour of the integration differs if you are already
+      <div class="form-group col-sm-6 mx-auto">
+        <small><strong>Integration notes</strong>: The behaviour of the integration differs if you are already
           logged in to Litmus, if you are logged in, you may wish to
-          <a href="https://litmus.com/logout">logout</a>.
-        </p>
-        <p>
-          The following are fields that your application would provide via the
+          <a href="https://litmus.com/logout">logout</a>. The following are fields that your application would provide via the
           SDK, not shown to end users.
-        </p>
+        </small>
         <form>
           <fieldset class="form-group">
             <label for="user-hash">Example user hash<br>(change this to simulate a different ESP user)</label>
@@ -130,7 +126,8 @@
       </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="editor">
-      <div class="form-group">
+      <div class="form-group col-sm-6 mx-auto">
+        <small><strong>Integration notes</strong>: This is an example of where the user would design/code an email.</small>
         <form>
           <fieldset class="form-group">
             <label for="subject">Email Subject</label>
@@ -140,6 +137,9 @@
             <label for="html">Email HTML</label>
             <textarea class="form-control" name="html" id="html" cols="40" rows="10"><h1>Awesome email content</h1></textarea>
           </fieldset>
+          <button href="#" class="btn btn-secondary" id="save-test">
+            Save and test
+          </button>
         </form>
       </div>
     </div>
@@ -151,15 +151,6 @@
       <button type="button" class="btn btn-primary btn-lg" onclick="alert('Sent! ;)');">Send Campaign</button>
     </div>
   </div>
-
-<!-- the footer demonstrates how the frame resizes and pushes the application
-     content below it down -->
-<footer class="footer">
-  <div class="container-fluid">
-    <hr>
-    <span class="text-muted">Awesome ESP's awesome footer.</span>
-  </div>
-</footer>
 
   <!-- bootstrap script imports -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -215,5 +206,10 @@
     // set up HTML5 history on tab navigation to demonstrate the interaction of
     // the frame's history with the parent
     $('a[data-toggle="tab"]').historyTabs();
+
+    //Sample button to simulate saving and continuing to a Litmus Test
+    $('#save-test').on('click', function () {
+      $('.nav-tabs a[href="#litmus-platform"]').tab('show');
+    });
   </script>
 </body>
