@@ -7,12 +7,69 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
+  <!-- demo styling not a part of integration -->
   <style>
-    body { background-color: #fff; }
-    .tab-content { min-height: 400px; background-color: #fff; }
-    h1 { font-size: 2rem; padding: 1rem 0; margin-bottom: 0; }
-    .tab-pane { padding: 15px; }
+    body {
+      background-color: #f8f9fc;
+    }
+    .tab-content { min-height: 400px; }
+    h1 { font-size: 2rem; padding: 1rem 0; }
+    .tab-pane { padding: 30px 15px; }
     #litmus-platform { padding: 0; }
+
+    .sample-partner-chrome {
+      background-image: linear-gradient(-1deg, #2B95E6 2%, #1D84D2 100%);
+      padding: 13px 20px;
+    }
+
+    .sample-partner-chrome h1 {
+      color: #fff;
+      float: left;
+      font-size: 18px;
+      margin-top: 3px;
+      margin-bottom: 0;
+      margin-right: 50px;
+      padding: 0;
+    }
+
+    .sample-partner-chrome .logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .sample-partner-chrome h1,
+    .sample-partner-chrome .logo {
+      margin-top: 12px;
+    }
+
+    .sample-partner-chrome .nav-tabs {
+      border-bottom: none;
+    }
+
+    .sample-partner-chrome .nav-item a {
+      color: #fff;
+      margin-top: 3px;
+    }
+
+    .sample-partner-chrome .nav-item a:hover {
+      opacity: 0.8;
+    }
+
+    .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+      border-color: transparent!important;
+    }
+
+    .sample-partner-chrome a.active {
+      background-color: #1166A5!important;
+      border-radius: 4px;
+      border: none;
+      color: #fff!important;
+    }
+
+    button {
+      cursor: pointer;
+    }
   </style>
 
   <script src="https://litmus.com/inline/sdk-0.0.1.js"></script>
@@ -20,33 +77,24 @@
 <body>
   <div class="container-fluid">
 
-    <div class="row">
-      <div class="col-sm-12">
-        <h1><%= app_name %></h1>
-        <div class="alert alert-info">
-          Note: Only the content in the Litmus tab is rendered by the SDK. The rest is our example ESP.
-        </div>
-      </div>
+    <div class="row sample-partner-chrome">
+      <h1>Sample <%= app_name %></h1>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="#hidden-config" role="tab" data-toggle="tab">Hidden config</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#editor" role="tab" data-toggle="tab">Design</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#litmus-platform" role="tab" data-toggle="tab">Test</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#send" role="tab" data-toggle="tab">Send</a>
+        </li>
+      </ul>
     </div>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" href="#hidden-config" role="tab" data-toggle="tab">Hidden config</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#editor" role="tab" data-toggle="tab">Design</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#litmus-platform" role="tab" data-toggle="tab">Litmus</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#send" role="tab" data-toggle="tab">Send</a>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div><!-- /container-fluid -->
 
 
