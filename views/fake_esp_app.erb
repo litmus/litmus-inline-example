@@ -146,7 +146,8 @@
     $('a[data-toggle="tab"]').historyTabs();
 
     //Sample button to simulate saving and continuing to a Litmus Test
-    $('#save-test').on('click', function () {
+    $('#save-test').on('click', function (e) {
+      e.preventDefault();
       $('.nav-tabs a[href="#litmus-platform"]').tab('show');
     });
   </script>
