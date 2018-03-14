@@ -10,7 +10,7 @@
   <!-- demo styling not a part of integration -->
   <link rel="stylesheet" href="stylesheets/fake-esp.css">
 
-  <script src="https://litmus.com/inline/sdk-0.0.1.js"></script>
+  <script src="https://litmus.dev/inline/sdk-0.0.1.js"></script>
 </head>
 <body>
   <div class="container-fluid">
@@ -98,7 +98,10 @@
 
   <!-- Litmus Inline integration setup -->
   <script>
-    Litmus.setup("<%= publishable_key %>");
+    Litmus.setup({
+      "publishableKey": "<%= publishable_key %>",
+      "sessionSigningUrl": "/sign-session-jwt"
+    });
 
     // on load we initialise our demo with random hashes - a collision with
     // someone who's previously used the demo can be confusing.
