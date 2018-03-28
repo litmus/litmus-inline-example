@@ -16,7 +16,7 @@ end
 
 post '/sign-session-jwt' do
   @payload = JSON.parse(request.body.read)
-                .merge('iat' => Time.now.to_i)
+                 .merge('iat' => Time.now.to_i)
 
   halt 403 unless jwt_user_matches_session_user?
 
