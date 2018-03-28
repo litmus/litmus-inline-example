@@ -47,18 +47,24 @@
         </small>
         <form>
           <fieldset class="form-group">
-            <label for="user-hash">Example user hash<br>(change this to simulate a different ESP user)</label>
+            <label for="user-hash">Example user hash</label>
             <input class="form-control" type="text" name="user-hash" id="user-hash" />
+            <small>
+              (change this to simulate a different ESP user<br>
+              append '-mismatch' to simulate a session signing failure)
+            </small>
           </fieldset>
 
           <fieldset class="form-group">
-            <label for="account-hash">Example (optional) account hash</label>
+            <label for="account-hash">Example account hash</label>
             <input class="form-control" type="text" name="account-hash" id="account-hash" value="xyz789" />
+            <small>(optional)</small>
           </fieldset>
 
           <fieldset class="form-group">
-            <label for="project-hash">Example project hash<br>(used to distinguish a project/document/campaign/test-set)</label>
+            <label for="project-hash">Example project hash</label>
             <input class="form-control" type="text" name="project-hash" id="project-hash" value="foo456" />
+            <small>(used to distinguish a project/document/campaign/test-set)</small>
           </fieldset>
         <form>
       </div>

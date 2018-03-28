@@ -59,3 +59,7 @@ h1 { font-size: 2rem; padding: 1rem 0; }
 button {
   cursor: pointer;
 }
+
+fieldset {
+  margin-top: 1.5rem;
+}
