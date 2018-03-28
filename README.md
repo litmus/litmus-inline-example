@@ -42,9 +42,8 @@ Then use http://0.0.0.0:4567
 
 Example:
 ```
-# required for all plan flow example
-export INLINE_PUBLISHABLE_KEY_ALL_PLAN=pk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+export PUBLISHABLE_KEY=pk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 
-# required for enterprise flow example
-export INLINE_PUBLISHABLE_KEY_ENTERPRISE=pk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+# required for JWT based session signing
+export SECRET_KEY=sk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 ```

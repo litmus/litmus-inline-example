@@ -1,35 +1,36 @@
-#
-# This app is only used to inject different publishable keys to show the
-# different sign up handling for "all-plan" and "enterprise" flows.
-#
-
 require 'bundler'
 Bundler.require
+
+abort('PUBLISHABLE_KEY env var missing') unless ENV['PUBLISHABLE_KEY']
+abort('SECRET_KEY env var missing') unless ENV['SECRET_KEY']
 
 enable :sessions
 
 get '/' do
-  erb :home
-end
-
-get '/all-plan' do
-  publishable_key = ENV["INLINE_PUBLISHABLE_KEY_ALL_PLAN"] or
-                    raise "INLINE_PUBLISHABLE_KEY_ALL_PLAN env var missing"
-
   erb :fake_esp_app,
       locals: {
-        app_name: 'Example Single Page ESP - All Plan Flow (no trial)',
-        publishable_key: publishable_key
+        app_name: 'Example Single Page ESP' || ENV['APP_NAME'],
+        publishable_key: ENV['PUBLISHABLE_KEY']
       }
 end
 
-get '/enterprise' do
-  publishable_key = ENV["INLINE_PUBLISHABLE_KEY_ENTERPRISE"] or
-                    raise "INLINE_PUBLISHABLE_KEY_ENTERPRISE env var missing"
+post '/sign-session-jwt' do
+  @payload = JSON.parse(request.body.read)
+                 .merge('iat' => Time.now.to_i)
 
-  erb :fake_esp_app,
-      locals: {
-        app_name: 'Example Single Page ESP - Enterprise Flow',
-        publishable_key: publishable_key
-      }
+  halt 403 unless jwt_user_matches_session_user?
+
+  JWT.encode(@payload, ENV['SECRET_KEY'], 'HS256')
+end
+
+def jwt_user_matches_session_user?
+  # in a real app we must validate the user identifier against the current
+  # session.
+  # To save us managing real sessions for our demo, we'll instead allow faking
+  # the error scenario:
+  if @payload['user'].nil? || @payload['user'].end_with?('-mismatch')
+    false
+  else
+    true
+  end
 end
