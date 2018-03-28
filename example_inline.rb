@@ -9,7 +9,7 @@ enable :sessions
 get '/' do
   erb :fake_esp_app,
       locals: {
-        app_name: 'Example Single Page ESP',
+        app_name: 'Example Single Page ESP' || ENV['APP_NAME'],
         publishable_key: ENV['PUBLISHABLE_KEY']
       }
 end
