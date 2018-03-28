@@ -26,7 +26,9 @@ bundle
 ## Deployment
 
 This is structured for easy deployment to heroku. At the time of writing
-deployed to https://litmus-inline-example.herokuapp.com
+deployed to:
+- https://litmus-inline-all-plan.herokuapp.com (configured to allow all Litmus plans)
+- https://litmus-inline-enterprise.herokuapp.com (configured for Enterprise customers)
 
 ## Running locally
 
