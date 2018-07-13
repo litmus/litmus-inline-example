@@ -127,7 +127,7 @@
         project: document.getElementById("project-hash").value
       });
     };
-    window.addEventListener("litmus-ready", identify);
+    identify();
     document.getElementById("user-hash").onchange = identify;
     document.getElementById("account-hash").onchange = identify;
     document.getElementById("project-hash").onchange = identify;
