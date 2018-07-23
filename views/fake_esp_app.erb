@@ -10,7 +10,7 @@
   <!-- demo styling not a part of integration -->
   <link rel="stylesheet" href="stylesheets/fake-esp.css">
 
-  <script src="https://litmus.com/inline/sdk-0.0.1.js"></script>
+  <script src="https://litmus.com/inline/sdk-1.0.js"></script>
 </head>
 <body>
   <div class="container-fluid">
@@ -146,7 +146,7 @@
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr("href") // activated tab
       if (target === "#litmus-platform") {
-        Litmus.open();
+        Litmus.open(Litmus.PREVIEWS);
       }
     });
 
