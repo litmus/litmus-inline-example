@@ -1,6 +1,5 @@
 
-
-# Litmus Inline (BETA) - Developer integration guide
+# Litmus Inline - Developer integration guide
 
 ## Overview
 
@@ -17,7 +16,7 @@ Litmus Inline allows you to add select parts of the Litmus experience as a step 
 
 Embed our SDK's integration script in your editor page:
 ```html
-<script src='https://litmus.com/inline/sdk-0.0.1.js'></script>
+<script src='https://litmus.com/inline/sdk-1.0.js'></script>
 ```
 
 Then setup the integration:
@@ -56,10 +55,10 @@ Add a div the SDK can target in to your UI with id `litmus-container`:
 When the user reaches a stage in your application where you wish to show Litmus Inline call:
 
 ```js
-Litmus.open();
+Litmus.open(Litmus.PREVIEWS)
 ```
 
-This creates a new iFrame within the container, sends on the identification information and opens the integration.
+This creates a new iFrame within the container, sends on the identification information and opens the integration with the requested Litmus features, in this case just "Previews".
 
 Each time the user returns to the Litmus step in your application, call `Litmus.open` once more.
 
