@@ -260,11 +260,12 @@ Litmus.setup({
 ```
 
 ### Javascript errors
-We endeavour to ensure the SDK, or any other supplied JavaScript is tested and fault free. We do not anticipate a developer to encounter any JavaScript errors outside those that are intentionally generated to notify an integrator of integration errors.
 
-We've had an integrator report an error in the past that was unrelated to the SDK, but third-party JavaScript used by Litmus.com directly. Litmus.com uses number of third party services for purposes such as account protection and analytics, which may encounter outages / environmental issues that are outside out control. The SDK never incorporates third-party JavaScript, so in the unlikely event in encountering an issue, it will be contained to the content of the iframe rendered by the SDK, and should not impact the parent window's ability to function.
+We endeavour to ensure the SDK, or any other supplied JavaScript is tested and fault free. We do not anticipate you should encounter any JavaScript errors outside those that are intentionally generated to flag integration problems.
 
-However, if an integrator encounters any JavaScript issues that are unexpected, we would appreciate being notified of such an occurance, along with browser + operating system details so we can further investigate the issue.
+We've had report of an error in the past that was unrelated to the SDK, instead caused by a third-party script used by Litmus.com directly within the frame. Litmus.com uses a number of third party services for purposes such as account protection and analytics which may encounter outages / environmental issues that are outside our control. The SDK never incorporates third-party JavaScript within the context of your application, so in the unlikely event of encountering an issue, it will be contained within the context of iframe injected by the SDK, and should not impact the parent window.
+
+However, if you encounter any JavaScript issues that are unexpected, we would appreciate being notified of such an occurrence, along with browser and operating system details so we can investigate.
 
 ## Roadmap, future features
 
