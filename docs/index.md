@@ -259,6 +259,13 @@ Litmus.setup({
 })
 ```
 
+### Javascript errors
+We endeavour to ensure the SDK, or any other supplied JavaScript is tested and fault free. We do not anticipate a developer to encounter any JavaScript errors outside those that are intentionally generated to notify an integrator of integration errors.
+
+We've had an integrator report an error in the past that was unrelated to the SDK, but third-party JavaScript used by Litmus.com directly. Litmus.com uses number of third party services for purposes such as account protection and analytics, which may encounter outages / environmental issues that are outside out control. The SDK never incorporates third-party JavaScript, so in the unlikely event in encountering an issue, it will be contained to the content of the iframe rendered by the SDK, and should not impact the parent window's ability to function.
+
+However, if an integrator encounters any JavaScript issues that are unexpected, we would appreciate being notified of such an occurance, along with browser + operating system details so we can further investigate the issue.
+
 ## Roadmap, future features
 
 Although the beta focusses on Inbox Previews, our intention is that, over time, a number of other key Litmus product features will be made available to partners, for use within the Litmus Inline experience. These additional features will not automatically be enabled. Instead, they will be enabled by mutual agreement with each integrator.
