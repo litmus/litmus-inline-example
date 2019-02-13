@@ -29,7 +29,7 @@ This is structured for easy deployment to heroku. At the time of writing
 deployed to:
 - https://litmus-inline-all-plan.herokuapp.com (configured to allow all Litmus plans)
 - https://litmus-inline-enterprise.herokuapp.com (configured for Enterprise customers)
-
+- https://litmus-inline-no-anon-access.herokuapp.com (configured for Enterprise, but no anonymous testing)
 ## Running locally
 
 ```sh
