@@ -11,6 +11,7 @@ Litmus Inline allows you to add select parts of the Litmus experience as a step 
 - Reference integration live instances:
   - [configured to allow all Litmus plan types](https://litmus-inline-all-plan.herokuapp.com)
   - [configured for Enterprise customers](https://litmus-inline-enterprise.herokuapp.com)
+  - [configured for Enterprise customers, but no anonymous testing](https://litmus-inline-no-anon-access.herokuapp.com)
 
 ## Setup
 
@@ -69,6 +70,8 @@ From a user perspective there are two distinct phases of Litmus Inline usage:
 - **pseudo-anonymous**
 
   A user authenticated with your app is uniquely identified to Litmus, they receive a limited free user experience. In the case of the Previews product this means a fixed monthly allowance of previews they can run.
+
+  If your integration does not require this functionality, it can be disabled by discussing with your point of contact at Litmus. This isn't a feature that can be disabled via the SDK.
 
 - **authenticated with Litmus**
 
