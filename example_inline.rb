@@ -10,7 +10,8 @@ get '/' do
   erb :fake_esp_app,
       locals: {
         app_name: ENV['APP_NAME'] || 'Example Single Page ESP',
-        publishable_key: ENV['PUBLISHABLE_KEY']
+        publishable_key: ENV['PUBLISHABLE_KEY'],
+        sdk_url: ENV['SDK_URL'] || 'https://litmus.com/inline/sdk-1.0.js'
       }
 end
 
