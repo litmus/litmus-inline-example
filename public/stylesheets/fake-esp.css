@@ -63,3 +63,12 @@ button {
 fieldset {
   margin-top: 1.5rem;
 }
+
+.orange .sample-partner-chrome {
+  background-image: linear-gradient(-1deg, #e69f2b 2%, #f1736a 100%);
+}
+
+.orange .sample-partner-chrome a.active {
+  background-color: #dc6735!important;
+}
+
