@@ -145,7 +145,7 @@ The SDK will then request a signed JWT from the server
  - on each Litmus.identify call
  - when the JWT becomes stale
 
-HTTP request made by the SDK, in the context of your application (ie with any session cookies):
+HTTP request made by the SDK, in the context of your application (ie with any session cookies, if you require custom headers, [see below](#custom-headers)):
 
 ```
 POST https://your-esp.com/sign-session-jwt
@@ -249,6 +249,25 @@ and the expected JWT payload would be
   "iat": 1234567890
 }
 
+```
+
+### Custom headers
+
+If the request to your server for session signing requires additional headers, in particular if you manually send authentication tokens rather than using session cookies, you may pass an optional parameter to `Litmus.setup` – `sessionSigningHeaders`.
+
+The parameter value is expected to be either a JavaScript object, or a callback returning a JavaScript object which will be run before each request to your server. Each key/value pair in the object is applied as a header.
+
+eg
+
+```
+Litmus.setup({
+  // after required config...
+  sessionSigningHeaders: headersCallback
+});
+
+function headersCallback() {
+  return { "Authorization": "Bearer " + yourSessionJwt() }
+}
 ```
 
 ### Development mode
