@@ -77,6 +77,18 @@ From a user perspective there are two distinct phases of Litmus Inline usage:
 
   A user logs in or signs up for a paid Litmus plan and associates their account in your application with their account in Litmus. They receive a more complete user experience and are able to lean on more features and settings available in the main Litmus application.
 
+## Embedding
+
+You must embed the script directly from litmus.com:
+
+```html
+<script src='https://litmus.com/inline/sdk-1.0.js'></script>
+```
+
+**Do not self host a static version of this** – the contents of the script changes over time.
+
+The "1.0" versioning here reflects SDK contract compatability, not a file version.
+
 ## HTTPS
 
 The SDK and all its resources on litmus.com are served securely via HTTPS/TLS. We similarly require that the parent page within your application where the SDK is utilised to be secured with HTTPS/TLS.
@@ -281,7 +293,7 @@ Litmus.setup({
 })
 ```
 
-### Javascript errors
+## Javascript errors
 
 We endeavour to ensure the SDK, or any other supplied JavaScript is tested and fault free. We do not anticipate you should encounter any JavaScript errors outside those that are intentionally generated to flag integration problems.
 
