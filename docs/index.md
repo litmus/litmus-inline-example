@@ -293,7 +293,7 @@ Litmus.setup({
 })
 ```
 
-Integrators that do not have pseudo-anonymous functionality included in their agreement, can omit the session signing step with the same `urn:litmus:inline:skip-signing` configuration.
+Integrators that do not have pseudo-anonymous functionality included in their agreement, can omit the session signing step with the same `urn:litmus:inline:skip-signing` configuration for their production mode integration.
 
 ## Javascript errors
 
