@@ -282,7 +282,7 @@ function headersCallback() {
 }
 ```
 
-### Development mode
+### Development mode / No Pseudo-anonymous functionality in agreement
 
 To get started quickly you may disable session signing in a development mode integration by providing the URN `urn:litmus:inline:skip-signing` as the `sessionSigningUri` provided to `Litmus.setup`, ie:
 
@@ -292,6 +292,8 @@ Litmus.setup({
   sessionSigningUri: "urn:litmus:inline:skip-signing"
 })
 ```
+
+Integrators that do not have pseudo-anonymous functionality included in their agreement, can omit the session signing step with the same `urn:litmus:inline:skip-signing` configuration for their production mode integration.
 
 ## Javascript errors
 
