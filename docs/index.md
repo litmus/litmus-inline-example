@@ -33,7 +33,7 @@ Identify your end user and what project (or campaign) they're working on:
 ```js
 Litmus.identify({
   user:    "<anonymised-user-hash>",
-  account: "<anonymised-account-hash>", // optional
+  account: "<anonymised-account-hash>",
   project: "<anonymised-project-hash>"
 });
 ```
