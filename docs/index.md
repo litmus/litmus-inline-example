@@ -24,7 +24,8 @@ Then setup the integration:
 ```js
 Litmus.setup({
   publishableKey:    "<publishable-key>",  // provided by Litmus, prefixed pk_
-  sessionSigningUri: "urn:litmus:inline:skip-signing" // see session signing below
+  sessionSigningUri: "urn:litmus:inline:skip-signing", // see session signing below
+  scrollable: true // optional parameter which defaults to false, see "Layout, frame sizing considerations" below
 });
 ```
 
@@ -97,7 +98,7 @@ The SDK and all its resources on litmus.com are served securely via HTTPS/TLS. W
 
 The injected frame has a **minimum width of 1280px**, it is best to arrange your layout to minimise page content to the left or right of the frame when Litmus Inline is visible.
 
-The frame dynamically resizes its height rather than showing its own scroll bar to provide more seamless integration with your page. Typically this ranges between approximately 700px - 2000px, but varies based on the content in the frame and on the width of the frame. You should anticipate the frame being taller than the browser viewport and so vertical scrolling may be required.
+The frame dynamically resizes its height rather than showing its own scroll bar to provide more seamless integration with your page. Typically this ranges between approximately 700px - 2000px, but varies based on the content in the frame and on the width of the frame. You should anticipate the frame being taller than the browser viewport and so vertical scrolling may be required. If it is not possible to have vertical scrolling in your page, scrolling can be enabled within the frame itself by passing the optional `scrollable: true` parameter to the `Litmus.setup` function described in the "Setup" section.
 
 Due to the requirements mentioned above and because of the nature of the user interface within the frame it's inadvisable to locate the frame within a modal window overlaying your application.
 
