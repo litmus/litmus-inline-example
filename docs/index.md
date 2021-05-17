@@ -38,7 +38,7 @@ Litmus.identify({
 });
 ```
 
-The identification details can be hashed to maintain anonymity until the user chooses to sign up or login to Litmus. The only requirement for these strings is that a user (or account/project) that's unique to your system gets a string that is also unique. This means you can just provide integer ids if you prefer.
+The identification details can be hashed to maintain anonymity until the user chooses to sign up or login to Litmus. The only requirement for these strings is that the user, account and project need to be unique to your system and get a string that is also unique. This means you can just provide integer ids if you prefer.
 
 Next, describe how to the obtain the email from the page context by providing callback functions returning the desired data, which will be called each time a new Litmus test is requested:
 
@@ -73,6 +73,10 @@ From a user perspective there are two distinct phases of Litmus Inline usage:
   A user authenticated with your app is uniquely identified to Litmus, they receive a limited free user experience. In the case of the Previews product this means a fixed monthly allowance of previews they can run.
 
   If your integration does not require this functionality, it can be disabled by discussing with your point of contact at Litmus. This isn't a feature that can be disabled via the SDK.
+
+  Also, how the monthly allowance of previews is tracked can be discussed with your point of contact at Litmus. The options being:
+  1. Per **user**, where the fixed monthly allowance is tied to each individual user.
+  2. Per **account**, where the fixed monthly allowance is tied to each account.
 
 - **authenticated with Litmus**
 
