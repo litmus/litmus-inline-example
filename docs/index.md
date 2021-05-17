@@ -38,7 +38,7 @@ Litmus.identify({
 });
 ```
 
-The identification details can be hashed to maintain anonymity until the user chooses to sign up or login to Litmus. The only requirement for these strings is that the user, account and project need to be unique to your system and get a string that is also unique. This means you can just provide integer ids if you prefer.
+The identification details can be hashed to maintain anonymity until the user chooses to sign up or login to Litmus. The only requirement for these mandatory strings is that the user, account and project need to be unique to your system and get a string that is also unique. This means you can just provide integer ids if you prefer.
 
 Next, describe how to the obtain the email from the page context by providing callback functions returning the desired data, which will be called each time a new Litmus test is requested:
 
