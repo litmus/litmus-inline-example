@@ -24,7 +24,8 @@ Then setup the integration:
 ```js
 Litmus.setup({
   publishableKey:    "<publishable-key>",  // provided by Litmus, prefixed pk_
-  sessionSigningUri: "urn:litmus:inline:skip-signing" // see session signing below
+  sessionSigningUri: "urn:litmus:inline:skip-signing", // see session signing below
+  scrollable: true // optional parameter which defaults to false, see "Layout, frame sizing considerations" below
 });
 ```
 
@@ -32,12 +33,12 @@ Identify your end user and what project (or campaign) they're working on:
 ```js
 Litmus.identify({
   user:    "<anonymised-user-hash>",
-  account: "<anonymised-account-hash>", // optional
+  account: "<anonymised-account-hash>",
   project: "<anonymised-project-hash>"
 });
 ```
 
-The identification details can be hashed to maintain anonymity until the user chooses to sign up or login to Litmus. The only requirement for these strings is that a user (or account/project) that's unique to your system gets a string that is also unique. This means you can just provide integer ids if you prefer.
+The identification details can be hashed to maintain anonymity until the user chooses to sign up or login to Litmus. The only requirement for these mandatory strings is that the **user, account and project each need to be unique to your system** and get a string that is also unique. This means you can just provide integer ids if you prefer.
 
 Next, describe how to the obtain the email from the page context by providing callback functions returning the desired data, which will be called each time a new Litmus test is requested:
 
@@ -73,6 +74,10 @@ From a user perspective there are two distinct phases of Litmus Inline usage:
 
   If your integration does not require this functionality, it can be disabled by discussing with your point of contact at Litmus. This isn't a feature that can be disabled via the SDK.
 
+  Also, how the monthly allowance of previews is tracked can be discussed with your point of contact at Litmus. The options being:
+  1. Per **user**, where the fixed monthly allowance is tied to each individual user.
+  2. Per **account**, where the fixed monthly allowance is tied to each account.
+
 - **authenticated with Litmus**
 
   A user logs in or signs up for a paid Litmus plan and associates their account in your application with their account in Litmus. They receive a more complete user experience and are able to lean on more features and settings available in the main Litmus application.
@@ -97,7 +102,7 @@ The SDK and all its resources on litmus.com are served securely via HTTPS/TLS. W
 
 The injected frame has a **minimum width of 1280px**, it is best to arrange your layout to minimise page content to the left or right of the frame when Litmus Inline is visible.
 
-The frame dynamically resizes its height rather than showing its own scroll bar to provide more seamless integration with your page. Typically this ranges between approximately 700px - 2000px, but varies based on the content in the frame and on the width of the frame. You should anticipate the frame being taller than the browser viewport and so vertical scrolling may be required.
+The frame dynamically resizes its height rather than showing its own scroll bar to provide more seamless integration with your page. Typically this ranges between approximately 700px - 2000px, but varies based on the content in the frame and on the width of the frame. You should anticipate the frame being taller than the browser viewport and so vertical scrolling may be required. If it is not possible to have vertical scrolling in your page, scrolling can be enabled within the frame itself by passing the optional `scrollable: true` parameter to the `Litmus.setup` function described in the "Setup" section.
 
 Due to the requirements mentioned above and because of the nature of the user interface within the frame it's inadvisable to locate the frame within a modal window overlaying your application.
 
