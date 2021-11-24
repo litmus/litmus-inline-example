@@ -112,7 +112,7 @@ The SDK assumes the email source will not alter while the Litmus frame is visibl
 
 We aim for the same browser support for Litmus Inline as the main Litmus application. There may be cases where this isn't possible due to differences in support for some of the more specialised features we rely on to support frame interactions.
 
-In general we aim to support the current and previous stable desktop releases of Chrome, Safari and Firefox. We do similar with Microsoft's browsers, which at the time of writing means Edge 16, IE11, IE10. Litmus Inline and the main Litmus application do not support mobile browsers, though some features may work.
+In general we aim to support the current and previous stable desktop releases of Chrome, and Firefox. We do similar with Microsoft's browsers, which at the time of writing means Edge 16, IE11, IE10. Litmus Inline and the main Litmus application do not support mobile browsers, though some features may work.
 
 
 ## Inline Pseudo-anonymous Session Signing
